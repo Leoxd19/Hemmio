@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+ * Base CSS Variables
+ * 
+ * These variables define the color scheme for both light and dark themes.
+ * They use HSL values for better color manipulation.
+ */
+@layer base {
+  :root {
+    /* Light theme colors */
+    --background: 210 17% 98%; /* seasalt */
+    --foreground: 210 11% 15%; /* eerieblack */
+    --card: 210 16% 93%; /* antiflash */
+    --card-foreground: 210 11% 15%; /* eerieblack */
+    --primary: 38 92% 50%; /* amber */
+    --primary-foreground: 210 11% 15%; /* eerieblack */
+    --secondary: 210 14% 89%; /* platinum */
+    --secondary-foreground: 210 11% 15%; /* eerieblack */
+    --muted: 210 14% 83%; /* frenchgray */
+    --muted-foreground: 208 7% 46%; /* slategray */
+    --accent: 210 14% 89%; /* platinum */
+    --accent-foreground: 210 11% 15%; /* eerieblack */
+    --destructive: 0 84% 60%; /* red */
+    --destructive-foreground: 210 17% 98%; /* seasalt */
+    --border: 210 11% 71%; /* frenchgray2 */
+    --input: 210 11% 71%; /* frenchgray2 */
+    --ring: 38 92% 50%; /* amber */
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    /* Dark theme colors */
+    --background: 210 11% 15%; /* eerieblack */
+    --foreground: 210 17% 98%; /* seasalt */
+    --card: 210 10% 23%; /* onyx */
+    --card-foreground: 210 17% 98%; /* seasalt */
+    --primary: 38 92% 50%; /* amber */
+    --primary-foreground: 210 11% 15%; /* eerieblack */
+    --secondary: 210 9% 31%; /* outerspace */
+    --secondary-foreground: 210 17% 98%; /* seasalt */
+    --muted: 210 9% 31%; /* outerspace */
+    --muted-foreground: 210 11% 71%; /* frenchgray2 */
+    --accent: 210 9% 31%; /* outerspace */
+    --accent-foreground: 210 17% 98%; /* seasalt */
+    --destructive: 0 63% 31%; /* dark red */
+    --destructive-foreground: 210 17% 98%; /* seasalt */
+    --border: 208 7% 46%; /* slategray */
+    --input: 208 7% 46%; /* slategray */
+    --ring: 38 92% 50%; /* amber */
+  }
+}
+
+/* 
+ * Base Element Styles
+ * 
+ * These styles apply to basic HTML elements throughout the application.
+ */
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-size: 16px;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-bold text-foreground;
+  }
+  p {
+    @apply text-foreground font-medium;
+  }
+
+  /* Improved text readability */
+  .text-muted-foreground {
+    @apply text-foreground opacity-90 font-medium;
+  }
+
+  /* Text outline for better visibility */
+  .text-with-outline {
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+  }
+
+  .dark .text-with-outline {
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.2);
+  }
+}
+
+/* 
+ * Component Styles
+ * 
+ * Reusable component styles used throughout the application.
+ */
+@layer components {
+  /* Button styles */
+  .btn {
+    @apply px-4 py-2 rounded-lg transition-colors text-lg font-bold;
+  }
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90;
+  }
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
+  }
+
+  /* Card style */
+  .card {
+    @apply bg-card rounded-lg shadow-sm p-6 text-card-foreground;
+  }
+
+  /* Theme transition */
+  :root {
+    --transition-duration: 0.3s;
+  }
+
+  * {
+    transition-property: color, background-color, border-color;
+    transition-duration: var(--transition-duration);
+    transition-timing-function: ease;
+  }
+}
+
